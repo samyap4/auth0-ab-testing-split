@@ -5,7 +5,7 @@ import { Text, Button } from '@vercel/examples-ui'
 import Cookies from 'js-cookie'
 
 const removeCookie = () => {
-  Cookies.remove(COOKIE_NAME)
+  Cookies.remove('flag-universal_login');
   window.location.reload()
 }
 
@@ -17,7 +17,7 @@ const Hero = () => (
     </h1>
 
     <p className="lead" data-testid="hero-lead">
-      This is a sample application that demonstrates how to A/B test the Auth0 Universal Login by using Next.JS edge middleware and Google Optimize
+      This is a sample application that demonstrates how to A/B test the Auth0 Universal Login by using Next.JS edge middleware and Split.io
     </p>
     <Text className="mb-4">
         Click the button below if you want to change the current variant (each

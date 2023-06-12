@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { COOKIE_NAME } from 'lib/constants'
-import { getCurrentExperiment } from 'lib/optimize'
+import { getTreatment } from '@lib/split-node'
+import { SPLITS } from '@lib/split'
 
 export const config = {
     matcher: '/api/auth/login',
@@ -8,32 +8,23 @@ export const config = {
 
 export default function middleware(req: NextRequest) {
 
-  let cookie = req.cookies.get(COOKIE_NAME)?.value
+  const split = SPLITS.universal_login;
+  const cookieKey = `flag-${split}`
+  // Get the cookie from the request or a default value from split
+  const cookieValue =
+    req.cookies.get(cookieKey)?.value ||
+    (getTreatment('anonymous', SPLITS[split]) === 'on' ? '1' : '0')
 
-  if (!cookie) {
-    let n = Math.random() * 100
-    const experiment = getCurrentExperiment()
-    const variant = experiment.variants.find((v, i) => {
-      if (v.weight >= n) return true
-      n -= v.weight
-    })
-
-    cookie = `${experiment.id}.${variant.id}`
+  // Set the pathname based on the split and cookie value
+  if (cookieValue === '1') {
+    req.nextUrl.pathname = `/api/auth/portal-1-login`;
   }
 
-  const [, variantId] = cookie.split('.')
-  const url = req.nextUrl
-
-  // `0` is the original version
-  if (variantId !== '0') {
-    url.pathname = `/api/auth/portal-1-login`;
-  }
-
-  const res = NextResponse.rewrite(url)
+  const res = NextResponse.rewrite(req.nextUrl)
 
   // Add the cookie if it's not there
-  if (!req.cookies.has(COOKIE_NAME)) {
-    res.cookies.set(COOKIE_NAME, cookie)
+  if (!req.cookies[cookieKey]) {
+    res.cookies.set(cookieKey, cookieValue)
   }
 
   return res;
