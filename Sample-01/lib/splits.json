@@ -1,47 +1,35 @@
 {
-    "objects": [
-        {
-            "id": "3247e000-0957-11ee-bcd0-7a6b757a5f90",
-            "name": "universal_login",
-            "environment": {
-                "id": "8a1d93f0-063d-11ee-9384-ce4dc9af918a",
-                "name": "Prod-Default"
-            },
-            "trafficType": {
-                "id": "89ec4ac0-063d-11ee-9384-ce4dc9af918a",
-                "name": "user"
-            },
-            "killed": false,
-            "treatments": [
-                {
-                    "name": "on",
-                    "description": "Portal 1"
-                },
-                {
-                    "name": "off",
-                    "description": "Normal"
-                }
-            ],
-            "defaultTreatment": "off",
-            "baselineTreatment": "off",
-            "trafficAllocation": 100,
-            "rules": [],
-            "defaultRule": [
-                {
-                    "treatment": "on",
-                    "size": 50
-                },
-                {
-                    "treatment": "off",
-                    "size": 50
-                }
-            ],
-            "creationTime": 1686598300681,
-            "lastUpdateTime": 1686598908236,
-            "changeNumber": 1686598908238
-        }
-    ],
-    "offset": 0,
-    "limit": 50,
-    "totalCount": 1
+  "objects": [
+    {
+      "id": "3247e000-0957-11ee-bcd0-7a6b757a5f90",
+      "name": "universal_login",
+      "environment": {
+        "id": "8a1d93f0-063d-11ee-9384-ce4dc9af918a",
+        "name": "Prod-Default"
+      },
+      "trafficType": {
+        "id": "89ec4ac0-063d-11ee-9384-ce4dc9af918a",
+        "name": "user"
+      },
+      "killed": false,
+      "treatments": [
+        { "name": "on", "description": "Portal 1" },
+        { "name": "off", "description": "Normal" }
+      ],
+      "defaultTreatment": "off",
+      "baselineTreatment": "off",
+      "trafficAllocation": 100,
+      "rules": [],
+      "defaultRule": [
+        { "treatment": "on", "size": 50 },
+        { "treatment": "off", "size": 50 }
+      ],
+      "creationTime": 1686598300681,
+      "lastUpdateTime": 1686598908236,
+      "changeNumber": 1686598908238
+    }
+  ],
+  "offset": 0,
+  "limit": 50,
+  "totalCount": 1
 }

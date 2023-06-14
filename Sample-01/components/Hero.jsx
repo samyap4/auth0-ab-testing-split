@@ -17,7 +17,7 @@ const Hero = () => (
     </h1>
 
     <p className="lead" data-testid="hero-lead">
-      This is a sample application that demonstrates how to A/B test the Auth0 Universal Login by using Next.JS edge middleware and Split.io.  You can verify your cookie has been set after completing a login flow by searching for <code>flag-universal_login</code>.
+      This is a sample application that demonstrates how to A/B test the Auth0 Universal Login by using Next.JS edge middleware and Split.io.  You can verify your cookie has been set after completing a login flow by looking for: <code>flag-universal_login</code>
     </p>
     <Text className="mb-4">
         Click the button below if you want to change the current variant (each
